@@ -55,14 +55,10 @@ def bf(network_name, snapshot_name):
     return bf
 
 
-# Customize logging and pandas
-logging.getLogger('pybatfish').setLevel(logging.WARN)
-pandas_init()
+p_id = uuid.uuid4().hex
 
 def pytest_sessionstart(session):
     os.environ['bf_policy_name'] = session.name
-
-p_id = uuid.uuid4().hex
 
 def pytest_runtest_setup(item):
     # Get test file name
@@ -71,3 +67,9 @@ def pytest_runtest_setup(item):
     os.environ['bf_policy_name'] = test_file_name
     os.environ['bf_policy_id'] = p_id
     os.environ['bf_test_name'] = test_name
+
+# Customize logging and pandas
+logging.getLogger('pybatfish').setLevel(logging.WARN)
+pandas_init()
+
+

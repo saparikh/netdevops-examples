@@ -16,8 +16,11 @@
       name: local_batfish
       parameters:
         session_type: bfe
+
+  - name: Create the Layer1 topology
+    shell: python ./batfish/create_layer1_topology.py
   
-  - name: Initialize the example network
+  - name: Initialize the target network
     bf_init_snapshot:
       network: "{{network}}"
       snapshot: "{{snapshot}}"
