@@ -64,8 +64,6 @@ def test_bgp_sessions_up(bf):
     not_established = bgpsessions[
         bgpsessions['Established_Status'] != 'ESTABLISHED']
 
-    print(bf.q.bgpSessionCompatibility().answer().frame())
-
     test = not_established.empty
     pass_message = 'All BGP sessions are established\n'
     fail_message = f"Some BGP sessions are not established\n{not_established}"
